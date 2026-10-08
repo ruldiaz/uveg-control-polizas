@@ -2,8 +2,9 @@
 
 Esta es una aplicación web estática para registrar y consultar la información básica de pólizas de seguro. El proyecto corresponde al Reto 2 de la Unidad 1 de la materia *Despliegue de aplicaciones web y móviles* de la Universidad Virtual del Estado de Guanajuato.
 
-Alumno: Raúl Humberto Díaz Fernández
-Asesor: Jenny Betsabé Vázquez Aguirre
+- Alumno: Raúl Humberto Díaz Fernández
+
+- Asesor: Jenny Betsabé Vázquez Aguirre
 
 ## Funcionalidades de la aplicación
 
