@@ -40,3 +40,37 @@ Optimización y empaquetado
 Las imágenes están en formato SVG para conservar buena calidad con un peso bajo. Los archivos CSS y JavaScript se minificaron y se guardaron en la carpeta dist/, junto con el archivo index.html preparado para cargar los recursos ya optimizados.
 
 La carpeta dist/ se comprimió en el archivo control-polizas.zip, listo para transferirse y desplegarse en un servidor web.
+
+# Proceso para subir archivos a Github
+
+git init
+git status
+git branch -m master main
+
+Se configuraron el usuario y correo con:
+git config --global user.name "Raul Diaz"
+git config --global user.email "24001729@es.uveg.edu.mx"
+
+git add index.html css/ js/ img/
+git commit -m "feat: crear sistema de control de polizas"
+
+git add dist/ control-polizas.zip
+git commit -m "build: agregar recursos optimizados y paquete de despliegue"
+
+git add README.md
+git commit -m "docs: documentar optimizacion y empaquetado"
+
+git add .gitignore package-lock.json package.json
+git commit -m "feat: archivo .gitignore y package json"
+
+git remote add origin https://github.com/ruldiaz/uveg-control-polizas.git
+
+git push -u origin main
+
+Derivado de unos problemas para autenticación en github, se instaló gh con:
+sudo apt install gh
+
+gh auth login
+Se hizo a través del navegador la autenticación
+
+git push -u origin main
