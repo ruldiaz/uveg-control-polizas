@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación para llevar el control de pólizas de seguro.">
+    <title>Reto 2 Unidad 1 UVEG</title>
+    <link rel="stylesheet" href="css/styles.min.css">
+  </head>
+  <body>
+    <main class="app">
+      <img class="insurance-icon icon-car" src="img/car-insurance.svg" alt="Seguro de automóvil">
+      <img class="insurance-icon icon-home" src="img/home-insurance.svg" alt="Seguro de hogar">
+      <img class="insurance-icon icon-health" src="img/health-insurance.svg" alt="Seguro de salud">
+      <img class="insurance-icon icon-life" src="img/life-insurance.svg" alt="Seguro de vida">
+
+      <section class="policies" aria-labelledby="form-title">
+        <div class="heading">
+          <div>
+            <p class="label">Sistema para control de seguros</p>
+            <h2>UVEG Reto 2 Unidad 1 - Raúl Humberto Díaz Fernández</h2><br>
+            <h2 id="form-title">Registra una póliza</h2>
+          </div>
+          <p id="summary" class="summary" aria-live="polite">0 pólizas registradas</p>
+        </div>
+
+        <form id="policy-form">
+          <div class="form-grid">
+            <label>
+              Número de póliza
+              <input id="policy-number" type="text" maxlength="40" placeholder="Ej. AUTO-2026-001" required>
+            </label>
+            <label>
+              Aseguradora
+              <input id="insurer" type="text" maxlength="70" placeholder="Ej. Seguros Ejemplo" required>
+            </label>
+            <label>
+              Asegurado(a) o asegurados
+              <input id="insured" type="text" maxlength="100" placeholder="Nombre completo" required>
+            </label>
+            <label>
+              Tipo de seguro
+              <select id="policy-type" name="policy-type" required>
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option>Automóvil</option>
+                <option>Vida</option>
+                <option>Gastos médicos</option>
+                <option>Hogar</option>
+                <option>Otro</option>
+              </select>
+            </label>
+            <label>
+              Fecha de vencimiento
+              <input id="expiration" type="date" required>
+            </label>
+            <label>
+              Suma asegurada
+              <input id="insured-amount" type="number" min="0" step="0.01" placeholder="0.00" required>
+            </label>
+          </div>
+          <button class="primary" type="submit">Guardar póliza</button>
+        </form>
+        <p id="message" class="message" role="alert"></p>
+
+        <div class="list-heading">
+          <h2>Mis pólizas</h2>
+          <button id="clear-all" class="clear" type="button">Eliminar todas</button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Número de póliza</th>
+                <th>Asegurado(a)</th>
+                <th>Aseguradora</th>
+                <th>Vencimiento</th>
+                <th>Suma asegurada</th>
+                <th><span class="sr-only">Acciones</span></th>
+              </tr>
+            </thead>
+            <tbody id="policy-list"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state">
+            <strong>Aún no hay pólizas registradas.</strong>
+            <span>Completa el formulario para agregar la primera.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <template id="policy-template">
+      <tr>
+        <td class="number"></td>
+        <td><span class="insured"></span><small class="policy-type"></small></td>
+        <td class="insurer"></td>
+        <td class="expiration"></td>
+        <td class="amount"></td>
+        <td><button class="delete" type="button">Eliminar</button></td>
+      </tr>
+    </template>
+
+    <script src="js/app.min.js"></script>
+  </body>
+</html>
