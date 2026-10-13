@@ -1,161 +1,138 @@
 # RHDF - Sistema para control de seguros
+# Reto 3 Unidad 2 UVEG
+# Alumno: Raúl Humberto Díaz Fernández
+# Asesor: Jenny Betsabé Vázquez Aguirre
 
-Esta es una aplicación web estática para registrar y consultar la información básica de pólizas de seguro. El proyecto corresponde al Reto 2 de la Unidad 2 de la materia *Despliegue de aplicaciones web y móviles* de la Universidad Virtual del Estado de Guanajuato.
+Seguros RHDF es una aplicación web para registrar, consultar y eliminar información básica
+de pólizas de seguro. El proyecto utiliza Express.js y PostgreSQL, y se despliega
+en un entorno local seguro mediante Apache HTTP Server, HTTPS y un dominio
+simulado.
 
-- Alumno: Raúl Humberto Díaz Fernández
+> Para este proyecto y para sus pruebas se deben utilizar datos
+> ficticios y no información personal o confidencial real.
 
-- Asesor: Jenny Betsabé Vázquez Aguirre
+## Funcionalidades
 
-## Funcionalidades de la aplicación
+- Registro de número de póliza, aseguradora, persona asegurada, tipo de seguro,
+  fecha de vencimiento y suma asegurada.
+- Consulta de las aseguradoras registradas en PostgreSQL.
+- Visualización de pólizas ordenadas por fecha de vencimiento.
+- Eliminación individual de pólizas.
+- Validación de los datos recibidos por la API.
+- Aviso de Privacidad y Términos y Condiciones accesibles desde el footer.
 
-- Registro del número de póliza.
-- Captura de la aseguradora y de las personas aseguradas.
-- Selección del tipo de seguro.
-- Registro de la fecha de vencimiento y de la suma asegurada.
-- Visualización y eliminación de pólizas.
-- Conservación de los registros en el navegador mediante `localStorage`.
+## Arquitectura y tecnologías
 
-## Tecnologías utilizadas en la aplicación
+| Componente | Tecnología | Propósito |
+|---|---|---|
+| Interfaz | HTML5, CSS3 y JavaScript | Captura y presentación de información. |
+| Backend | Node.js y Express.js | API y servidor de la aplicación. |
+| Base de datos | PostgreSQL | Persistencia de aseguradoras y pólizas. |
+| Validación | express-validator | Validación de los datos enviados a la API. |
+| Seguridad del backend | Helmet y dotenv | Encabezados HTTP y configuración mediante variables de entorno. |
+| Proxy y HTTPS | Apache HTTP Server | Dominio local, TLS, encabezados y proxy inverso. |
+| Control de versiones | Git y GitHub | Historial de cambios y repositorio remoto. |
 
-- HTML5 para la estructura de la aplicación.
-- CSS3 para el diseño y la adaptación a distintos tamaños de pantalla.
-- JavaScript para el registro y la administración de pólizas.
-- SVG para imágenes representativas de los diferentes tipos de seguro.
-- Git y GitHub para el control de versiones.
-- Apache HTTP Server para el despliegue local.
-
-## Organización del proyecto
+## Estructura del proyecto
 
 ```text
 .
-├── css/                    # Estilos de la aplicación
-├── js/                     # Archivos javascript de la aplicación
-├── img/                    # Imágenes SVG
-├── dist/                   # Versión optimizada para despliegues
-├── index.html              # Página principal
-├── control-polizas.zip     # Paquete comprimido en ZIP listo para subir al servidor
-├── package.json            # Dependencias de optimización
-└── README.md               # Documentación técnica
+├── public/
+│   ├── css/                    # Estilos de la interfaz
+│   ├── img/                    # Ilustraciones SVG
+│   ├── js/                     # Lógica del navegador y consumo de la API
+│   ├── aviso-privacidad.html   # Documento de privacidad
+│   ├── index.html              # Página principal
+│   └── terminos-condiciones.html
+├── sql/
+│   └── init.sql                # Tablas, relación, restricciones e índices
+├── src/
+│   ├── routes/                 # Rutas de aseguradoras y pólizas
+│   ├── app.js                  # Configuración de Express
+│   └── db.js                   # Pool de conexiones de PostgreSQL
+├── .env.example                # Plantilla sin credenciales
+├── INSTALL.md                  # Guía completa de instalación y despliegue
+├── package.json                # Dependencias y scripts npm
+└── server.js                   # Inicio del servidor
 ```
 
-## Optimización y empaquetado
+## API
 
-Las imágenes se almacenaron en formato SVG porque mantienen su calidad al cambiar de tamaño y mantienen un peso reducido. Para la optimización se utilizaron SVGO, clean-css-cli y Terser:
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/api/health` | Comprueba la conexión entre Express y PostgreSQL. |
+| `GET` | `/api/aseguradoras` | Devuelve el catálogo de aseguradoras. |
+| `GET` | `/api/polizas` | Devuelve las pólizas registradas. |
+| `POST` | `/api/polizas` | Registra una póliza validada. |
+| `DELETE` | `/api/polizas/:id` | Elimina una póliza por identificador. |
+
+Las consultas a PostgreSQL se realizan con parámetros para evitar inyecciones
+SQL. La base de datos establece restricciones de unicidad, llaves foráneas,
+validación de suma asegurada e índices para campos de consulta frecuentes.
+
+## Instalación y ejecución
+
+Consulta [INSTALL.md](INSTALL.md) para obtener las versiones requeridas y los
+pasos completos de instalación de dependencias, PostgreSQL, variables de entorno,
+Apache, HTTPS y encabezados de seguridad.
+
+Después de configurar `.env`, inicia el servidor de desarrollo:
 
 ```bash
-npm init -y
-npm install --save-dev svgo clean-css-cli terser
+npm install
+npm run dev
 ```
 
-Después, se generó la versión optimizada en la carpeta `dist/`:
+La aplicación estará disponible temporalmente en:
 
-```bash
-mkdir -p dist/css dist/js dist/img
-npx svgo -f img -o dist/img
-npx cleancss -O2 -o dist/css/styles.min.css css/styles.css
-npx terser js/app.js --compress --mangle -o dist/js/app.min.js
-cp index.html dist/index.html
-sed -i 's|css/styles.css|css/styles.min.css|; s|js/app.js|js/app.min.js|' dist/index.html
+```text
+http://127.0.0.1:3000
 ```
 
-La carpeta `dist/` contiene el archivo `index.html` y los recursos minificados `styles.min.css` y `app.min.js`. Finalmente, se generó el paquete comprimido listo para transferirse al servidor:
+## Despliegue local seguro
 
-```bash
-zip -r control-polizas.zip dist/
+La URL final de despliegue es:
+
+```text
+https://segurosrhdf.local
 ```
 
-El contenido del paquete se puede verificar con el comando:
+Apache recibe las solicitudes en los puertos `80` y `443`. El puerto `80`
+redirige de forma permanente a HTTPS; el puerto `443` utiliza un certificado
+autofirmado local, aplica encabezados de seguridad y funciona como proxy inverso
+hacia Express en `127.0.0.1:3000`.
 
-```bash
-unzip -l control-polizas.zip
-```
+Los encabezados configurados incluyen:
+
+- `Content-Security-Policy`
+- `Strict-Transport-Security`
+- `X-Content-Type-Options`
+- `X-Frame-Options`
+- `Referrer-Policy`
+
+El certificado es autofirmado, por lo que el navegador puede solicitar aceptar
+una excepción de seguridad la primera vez que se ingrese al dominio local.
+
+## Pruebas
+
+La aplicación se probó funcionalmente en Mozilla Firefox y Google Chrome. En
+ambos navegadores se verificaron el acceso por HTTPS, la carga de aseguradoras,
+el registro, la consulta y la eliminación de pólizas, así como los enlaces a los
+documentos legales.
+
+También se ejecutó Lighthouse en Google Chrome para evaluar rendimiento,
+accesibilidad, buenas prácticas y SEO.
 
 ## Versionamiento
 
-La URL del repositorio es:
+El repositorio remoto se encuentra en:
 
 <https://github.com/ruldiaz/uveg-control-polizas>
 
-Se emplearon commits descriptivos para distinguir las etapas del proyecto:
-
-```text
-feat: crear sistema de control de polizas
-build: agregar recursos optimizados y paquete de despliegue
-docs: documentar optimizacion y empaquetado
-feat: archivo .gitignore y package json
-```
-
-Para inicializar el repositorio local, vincularlo con GitHub y publicar los cambios se ejecutaron los siguientes comandos:
+El proyecto utiliza commits descriptivos para identificar cambios de aplicación,
+base de datos, seguridad, documentación y pruebas. El historial local se consulta
+con:
 
 ```bash
-git init
-git branch -M main
-git add .
-git commit -m "feat: crear sistema de control de polizas"
-git remote add origin https://github.com/ruldiaz/uveg-control-polizas.git
-git push -u origin main
+git log --oneline
 ```
-
-La autenticación con GitHub se realizó usando GitHub CLI:
-
-```bash
-sudo apt install gh
-gh auth login
-```
-
-## Despliegue con Apache en Linux Mint
-
-La aplicación se desplegó usando Apache HTTP Server en Linux Mint y quedó disponible en:
-
-<http://localhost/segurosrhdf>
-
-Primero se instaló y se activó Apache:
-
-```bash
-sudo apt update
-sudo apt install apache2
-sudo systemctl enable --now apache2
-```
-
-La versión optimizada se copió al directorio público del servidor:
-
-```bash
-sudo mkdir -p /var/www/control-polizas
-sudo cp -r dist/. /var/www/control-polizas/
-sudo chown -R www-data:www-data /var/www/control-polizas
-sudo find /var/www/control-polizas -type d -exec chmod 755 {} \;
-sudo find /var/www/control-polizas -type f -exec chmod 644 {} \;
-```
-
-Apache escucha en el puerto `80`, configurado mediante la directiva `Listen 80` en `/etc/apache2/ports.conf`. Se creó el archivo `/etc/apache2/sites-available/control-polizas.conf` con el siguiente Virtual Host:
-
-```apache
-<VirtualHost *:80>
-    ServerName localhost
-
-    Alias /segurosrhdf /var/www/control-polizas
-
-    <Directory /var/www/control-polizas>
-        Options -Indexes +FollowSymLinks
-        AllowOverride None
-        Require all granted
-        DirectoryIndex index.html
-    </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/control-polizas-error.log
-    CustomLog ${APACHE_LOG_DIR}/control-polizas-access.log combined
-</VirtualHost>
-```
-
-La directiva `Alias` relaciona la ruta web `/segurosrhdf` con el directorio físico `/var/www/control-polizas`. El bloque `<Directory>` permite a Apache servir los archivos de la aplicación y define `index.html` como la página inicial.
-
-Por último, se habilitó el sitio, se validó la sintaxis y se recargó Apache:
-
-```bash
-sudo a2ensite control-polizas.conf
-sudo a2dissite 000-default.conf
-sudo apache2ctl configtest
-sudo systemctl reload apache2
-```
-
-El resultado esperado del comando `sudo apache2ctl configtest` es `Syntax OK`.

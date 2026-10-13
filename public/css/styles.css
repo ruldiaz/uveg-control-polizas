@@ -154,6 +154,65 @@ small { display: block; margin-top: 4px; color: var(--muted); font-size: 0.76rem
 .empty-state[hidden] { display: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
 
+.site-footer {
+  display: flex;
+  width: min(980px, calc(100% - 40px));
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 auto 32px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.site-footer a,
+.back-link {
+  color: var(--primary-dark);
+  font-weight: bold;
+}
+
+.legal-page {
+  width: min(800px, calc(100% - 40px));
+  margin: 48px auto;
+  padding: 48px;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: 0 24px 60px gray;
+}
+
+.legal-page h1 {
+  margin-top: 0;
+}
+
+.legal-page h2 {
+  margin-top: 34px;
+  color: var(--primary-dark);
+}
+
+.legal-page p,
+.legal-page li {
+  line-height: 1.65;
+}
+
+.legal-date {
+  color: var(--muted);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+}
+
 @media (max-width: 1100px) {
   .app { width: min(760px, calc(100% - 28px)); margin: 20px auto; }
   .policies { padding: 36px 28px; }
@@ -163,4 +222,6 @@ small { display: block; margin-top: 4px; color: var(--muted); font-size: 0.76rem
 @media (max-width: 520px) {
   .form-grid { grid-template-columns: 1fr; }
   .heading { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .site-footer { align-items: flex-start; flex-direction: column; width: calc(100% - 28px); }
+  .legal-page { width: calc(100% - 28px); margin: 20px auto; padding: 32px 24px; }
 }
