@@ -1,5 +1,5 @@
 # RHDF - Sistema para control de seguros
-# Reto 3 Unidad 2 UVEG
+# Reto 4 Unidad 3 UVEG
 # Alumno: Raúl Humberto Díaz Fernández
 # Asesor: Jenny Betsabé Vázquez Aguirre
 
@@ -112,6 +112,29 @@ Los encabezados configurados incluyen:
 
 El certificado es autofirmado, por lo que el navegador puede solicitar aceptar
 una excepción de seguridad la primera vez que se ingrese al dominio local.
+
+## Preparación para Android
+
+La interfaz se empaqueta como aplicación Android mediante Capacitor. La
+configuración utiliza el identificador `mx.edu.uveg.segurosrhdf`, solicita
+únicamente el permiso `INTERNET` y genera un Android App Bundle firmado y
+optimizado con:
+
+```bash
+npm run android:sync
+cd android
+gradlew.bat bundleRelease
+```
+
+El AAB se genera en
+`android/app/build/outputs/bundle/release/app-release.aab`. La clave y sus
+credenciales de firma permanecen exclusivamente en `android/release.keystore`
+y `android/key.properties`, ambos excluidos de Git.
+
+Antes de una publicación real se debe desplegar el servicio API en una URL
+HTTPS pública y publicar el Aviso de Privacidad en una URL HTTPS accesible sin
+iniciar sesión. La dirección de privacidad aún está pendiente para esta
+simulación académica.
 
 ## Pruebas
 

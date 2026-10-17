@@ -1,0 +1,52 @@
+{
+  "applicationName": "Seguros RHDF",
+  "packageName": "mx.edu.uveg.segurosrhdf",
+  "defaultLanguage": "es-MX",
+  "applicationType": "Aplicación",
+  "category": "Productividad",
+  "price": "Gratuita",
+  "availability": [
+    "México"
+  ],
+  "containsAds": false,
+  "targetAudience": "Personas adultas; la aplicación no está dirigida a menores de edad.",
+  "shortDescription": "Organiza y consulta tus pólizas de seguro con datos de práctica.",
+  "fullDescription": "Seguros RHDF es una aplicación de productividad para registrar, consultar y organizar información básica de pólizas de seguro en un solo lugar. Permite guardar el número de póliza, aseguradora, persona asegurada, tipo de seguro, fecha de vencimiento y suma asegurada.\n\nLa aplicación facilita la consulta ordenada de las pólizas registradas y permite eliminar cada registro cuando ya no sea necesario. Está dirigida a personas que desean llevar un control personal, académico o de demostración de sus pólizas.\n\nSeguros RHDF no es una aseguradora, no intermedia contratos y no sustituye los documentos oficiales ni la comunicación con las instituciones aseguradoras. Para pruebas y demostraciones se deben utilizar datos ficticios.\n\nLa aplicación no muestra publicidad ni incorpora rastreadores. La versión Android solo requiere conexión a Internet para comunicarse con el servicio de la aplicación.",
+  "contactEmail": "24001729@es.uveg.edu.mx",
+  "privacyPolicy": {
+    "status": "Pendiente de publicación en una URL HTTPS pública antes de un lanzamiento real.",
+    "inAppLocation": "Aviso de Privacidad disponible desde la aplicación."
+  },
+  "dataSafetySimulation": {
+    "collectedData": [
+      "Nombre de la persona asegurada",
+      "Número de póliza",
+      "Aseguradora",
+      "Tipo de seguro",
+      "Fecha de vencimiento",
+      "Suma asegurada"
+    ],
+    "purpose": "Funcionalidad principal: registrar, consultar y organizar pólizas.",
+    "sharedWithThirdParties": false,
+    "adsOrTracking": false,
+    "deletion": "La persona usuaria puede eliminar cada póliza desde el listado de la aplicación.",
+    "securityCondition": "La API de producción debe publicarse exclusivamente mediante HTTPS."
+  },
+  "contentDeclarations": {
+    "sensitivePermissions": "No se solicitan permisos peligrosos; únicamente INTERNET.",
+    "appAccess": "No requiere cuenta ni credenciales para la simulación.",
+    "contentRating": "Completar el cuestionario IARC en Play Console; resultado esperado para una herramienta de productividad sin contenido restringido.",
+    "newsApp": false
+  },
+  "release": {
+    "versionName": "1.0",
+    "versionCode": 1,
+    "bundlePath": "android/app/build/outputs/bundle/release/app-release.aab",
+    "releaseNotes": "Primera versión de Seguros RHDF. Incluye registro, consulta y eliminación de pólizas, consulta de aseguradoras y acceso a Aviso de Privacidad y Términos y Condiciones."
+  },
+  "storeAssets": {
+    "appIcon": "release-assets/seguro-rhdf-icono-512.png",
+    "featureGraphic": "release-assets/seguro-rhdf-grafico-promocional-1024x500.png",
+    "screenshots": "Pendientes: capturar la aplicación en teléfono y tableta/emulador con datos ficticios."
+  }
+}

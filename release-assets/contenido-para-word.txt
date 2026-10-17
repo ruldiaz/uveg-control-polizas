@@ -1,0 +1,107 @@
+RETO 4 - PUBLICACION SIMULADA DE SEGUROS RHDF
+CONTENIDO LISTO PARA COPIAR EN WORD
+
+PORTADA
+
+Universidad Virtual del Estado de Guanajuato
+Nombre del módulo: [Completar]
+Nombre del reto: Reto 4. Publicación simulada de una aplicación en Google Play Console
+Nombre de la aplicación: Seguros RHDF
+Nombre del estudiante: Raúl Humberto Díaz Fernández
+Matrícula: [Completar]
+Nombre de la persona asesora: [Completar]
+Fecha de elaboración: 16 de octubre de 2026
+
+INTRODUCCIÓN
+
+El presente documento describe el procedimiento desarrollado para preparar la aplicación Seguros RHDF para una publicación simulada en Google Play Console. El objetivo fue verificar que la aplicación contara con los elementos técnicos, gráficos y normativos necesarios antes de distribuirla como una aplicación Android. Esta preparación resulta relevante porque la publicación de una aplicación no se limita a generar un archivo de instalación: también exige comunicar con claridad su propósito, proteger los datos que proporciona la persona usuaria y declarar de forma transparente los permisos, la publicidad y el tratamiento de la información.
+
+Seguros RHDF es una herramienta de productividad orientada al registro, consulta y organización de pólizas de seguro. Durante el reto se adaptó la interfaz web existente a un contenedor Android mediante Capacitor, se generó un Android App Bundle (AAB) firmado y optimizado y se revisaron las políticas de privacidad, publicidad, permisos y accesibilidad. Asimismo, se preparó la información que se utilizará en la ficha de Google Play, como la descripción de la aplicación, categoría, recursos gráficos, datos de contacto y disponibilidad regional.
+
+El proceso permite reconocer que la seguridad y el cumplimiento normativo deben considerarse desde el desarrollo. En particular, se atendió el uso de datos ficticios en las pruebas, la eliminación de registros, la ausencia de publicidad y rastreo, el acceso por HTTPS requerido para producción y la necesidad de contar con una política de privacidad pública antes de un lanzamiento real.
+
+DESARROLLO
+
+Descripción de la aplicación
+
+Seguros RHDF es una aplicación de productividad diseñada para registrar, consultar y organizar información básica de pólizas de seguro. Su objetivo es concentrar en un mismo lugar datos como el número de póliza, la aseguradora, la persona asegurada, el tipo de seguro, la fecha de vencimiento y la suma asegurada. La aplicación permite consultar las pólizas ordenadas por fecha de vencimiento y eliminar de forma individual los registros que ya no se requieran.
+
+La aplicación está dirigida a personas adultas que necesitan organizar sus pólizas con fines personales, académicos o de demostración. No funciona como aseguradora, no intermedia contratos y no sustituye los documentos oficiales ni la comunicación con las instituciones aseguradoras. Debido a que el sistema puede manejar datos personales y financieros de referencia, las pruebas se realizaron únicamente con información ficticia.
+
+Preparación técnica y recursos de publicación
+
+Para preparar la versión Android se integró Capacitor al proyecto y se creó el identificador de paquete mx.edu.uveg.segurosrhdf. Se configuró el nombre visible Seguros RHDF, la versión inicial 1.0 y el código de versión 1. También se diseñó un ícono adaptativo con un documento y un escudo, el cual representa el control protegido de pólizas, además de un ícono PNG de 512 por 512 píxeles y un gráfico promocional de 1024 por 500 píxeles para la ficha de Google Play.
+
+La distribución se generó como Android App Bundle, formato recomendado para Google Play. El archivo generado se encuentra en android/app/build/outputs/bundle/release/app-release.aab. La compilación de tipo release se configuró con reducción de código y recursos mediante R8, y se firmó con un keystore local que no se incluye en el repositorio. Estas medidas evitan publicar credenciales y preparan un artefacto de distribución optimizado.
+
+Cumplimiento de políticas de Google Play
+
+La aplicación cuenta con un Aviso de Privacidad accesible desde la propia interfaz. En este documento se especifica que se pueden registrar número de póliza, aseguradora, nombre de la persona asegurada, tipo de seguro, fecha de vencimiento y suma asegurada. Se explica que dichos datos se utilizan exclusivamente para las funciones principales de registro, consulta y organización, y que no se venden, comparten ni usan con fines comerciales.
+
+También se incorporó una explicación sobre conservación y eliminación: las pólizas permanecen registradas mientras la persona usuaria las conserve y pueden eliminarse desde el listado de la aplicación. Seguros RHDF no incluye anuncios, rastreadores ni SDK de publicidad. La versión Android solicita únicamente el permiso INTERNET para comunicarse con el servicio de la aplicación; no solicita acceso a cámara, ubicación, micrófono, contactos, llamadas ni almacenamiento compartido.
+
+Respecto a la seguridad, se configuró la aplicación para no aceptar tráfico HTTP no cifrado. Antes de una publicación real, la API y el Aviso de Privacidad deberán alojarse en URLs públicas con HTTPS válido. Para esta entrega se trata de una simulación académica y dicha condición se documenta como pendiente de publicación. La información declarada en Google Play debe coincidir siempre con el comportamiento real de la aplicación.
+
+Accesibilidad y verificación previa
+
+La interfaz incluye etiquetas visibles para los campos del formulario, textos alternativos para las ilustraciones, indicadores de foco para navegación con teclado, mensajes de estado mediante aria-live y etiquetas accesibles para los botones de eliminación. Además, la interfaz se adapta a pantallas pequeñas mediante estilos responsivos. Estas características permiten mejorar la comprensión y operación de la aplicación para personas que utilizan diferentes tamaños de pantalla o tecnologías de asistencia.
+
+Checklist previo al lanzamiento
+
+[ ] Nombre de la aplicación verificado: Seguros RHDF.
+[ ] Identificador de paquete verificado: mx.edu.uveg.segurosrhdf.
+[ ] AAB release firmado y optimizado generado.
+[ ] Ícono de 512 por 512 píxeles preparado.
+[ ] Gráfico promocional de 1024 por 500 píxeles preparado.
+[ ] Capturas de pantalla de teléfono y tableta obtenidas con datos ficticios.
+[ ] Descripción corta y completa revisadas.
+[ ] Categoría Productividad seleccionada.
+[ ] Aplicación configurada como gratuita y disponible en México.
+[ ] Declaración de ausencia de publicidad preparada.
+[ ] Política de privacidad disponible dentro de la aplicación.
+[ ] Contacto de privacidad definido: 24001729@es.uveg.edu.mx.
+[ ] Permisos revisados: únicamente INTERNET.
+[ ] Declaración de seguridad de datos preparada.
+[ ] URL HTTPS pública de la política de privacidad pendiente antes de una publicación real.
+[ ] URL HTTPS pública de la API pendiente antes de una publicación real.
+
+Comunicado de lanzamiento simulado
+
+Seguros RHDF ya está disponible como una herramienta de productividad para organizar información básica de pólizas de seguro. La aplicación permite registrar, consultar y eliminar pólizas de manera práctica, además de visualizar datos relevantes como aseguradora, fecha de vencimiento y suma asegurada en un solo lugar.
+
+Esta primera versión fue creada con fines personales, académicos y de demostración. Seguros RHDF no es una aseguradora ni reemplaza los documentos oficiales de las instituciones de seguros. Para proteger la información utilizada durante las pruebas, se recomienda registrar exclusivamente datos ficticios.
+
+La aplicación se publica sin publicidad ni rastreadores y con un enfoque de transparencia sobre el tratamiento de datos. La persona usuaria puede consultar el Aviso de Privacidad y los Términos y Condiciones desde la aplicación, así como eliminar las pólizas que ya no necesite conservar.
+
+CAPTURAS QUE DEBEN INSERTARSE EN EL DOCUMENTO
+
+Figura 1. Pantalla principal de Seguros RHDF con el nombre e ícono de la aplicación.
+Figura 2. Formulario de registro completado con datos ficticios.
+Figura 3. Listado de pólizas registradas y ordenadas.
+Figura 4. Confirmación o resultado de eliminar una póliza ficticia.
+Figura 5. Aviso de Privacidad dentro de la aplicación.
+Figura 6. Términos y Condiciones dentro de la aplicación.
+Figura 7. Recurso de ícono PNG de 512 por 512 píxeles.
+Figura 8. Gráfico promocional de 1024 por 500 píxeles.
+Figura 9. Configuración del proyecto Android con nombre y package name.
+Figura 10. Archivo AAB release generado.
+Figura 11. Ficha de la aplicación en Google Play Console simulada.
+Figura 12. Configuración de categoría, contacto, aplicación gratuita y disponibilidad en México.
+Figura 13. Declaración de contenido: sin anuncios y permisos revisados.
+Figura 14. Checklist final de publicación marcado.
+
+CONCLUSIÓN
+
+La preparación de Seguros RHDF para una publicación simulada en Google Play permitió identificar que el lanzamiento de una aplicación implica actividades técnicas y normativas complementarias. Uno de los principales desafíos fue transformar una aplicación web con backend en un artefacto Android distribuible. La solución fue integrar Capacitor, configurar un identificador de paquete, generar recursos gráficos propios, preparar una firma local de distribución y construir un AAB optimizado.
+
+Otro desafío fue el tratamiento responsable de los datos relacionados con pólizas. Aunque la actividad utiliza datos ficticios, la aplicación puede registrar nombres, números de póliza y sumas aseguradas, por lo que fue necesario ampliar el Aviso de Privacidad, indicar cómo se eliminan los registros y declarar que no existen anuncios, rastreadores ni permisos peligrosos. Asimismo, se estableció que cualquier lanzamiento real requerirá una API y una política de privacidad disponibles mediante HTTPS público.
+
+Finalmente, la simulación permitió preparar la ficha de Google Play, los recursos gráficos, el checklist y el comunicado de lanzamiento. Estas acciones muestran que la calidad de una aplicación no depende únicamente de que sus funciones operen correctamente, sino también de que su presentación, seguridad, accesibilidad y comunicación con las personas usuarias estén alineadas con los criterios de distribución.
+
+REFERENCIAS
+
+Google Play. (s. f.). Contenido de la app. Google Ayuda. Recuperado el 16 de octubre de 2026, de https://support.google.com/googleplay/android-developer/answer/9859455
+
+Google Play. (s. f.). Proporciona información para la sección Seguridad de los datos de Google Play. Google Ayuda. Recuperado el 16 de octubre de 2026, de https://support.google.com/googleplay/android-developer/answer/10787469
+
+Google Play. (s. f.). Política de Datos del Usuario. Google Ayuda. Recuperado el 16 de octubre de 2026, de https://support.google.com/googleplay/android-developer/answer/10144311
